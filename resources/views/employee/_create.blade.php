@@ -25,22 +25,6 @@
                     <form action="{{ route('addEmployee') }}" class="needs-validation" novalidate method="post">
                         @csrf
                         <div class="row">
-                            <div class="col-md-4">
-                                <div class="mb-3">
-                                    <label for="validationCustom02" class="form-label">Employee ID<span
-                                            style="color:red">*</span></label>
-                                    <input type="text" class="form-control" id="validationCustom02" name="employeeId"
-                                        placeholder="employee id" value="{{ old('employeeId') }}" required>
-                                    <div class="valid-feedback">
-                                        Looks good!
-                                    </div>
-                                    <span class="text-danger">@error('employeeId')
-                                        {{ $message }} @enderror</span>
-                                    <div class="invalid-feedback">
-                                        Please enter the valid Employee id.
-                                    </div>
-                                </div>
-                            </div>
                             <div class="col-md-3">
                                 <div class="mb-3">
                                     <label for="validationCustom01" class="form-label">User Name<span
@@ -56,7 +40,7 @@
                                         @enderror
                                     </span>
                                     <div class="invalid-feedback">
-                                        Please enter the valid username.
+                                        Please enter the valid Employee ID.
                                     </div>
                                 </div>
                             </div>
@@ -158,8 +142,8 @@
                                     <!-- <input type="text" class="form-control" id="validationCustom02" name="designation" placeholder="Designation" value="{{ old('designation') }}"> -->
                                     <select class="form-select" name="designation" id="designation">
                                         <option>Select</option>
-                                        <option>Developer</option>
-                                        <option>Designer</option>
+                                        <option>Designation1</option>
+                                        <option>Designation2</option>
                                     </select>
                                     <div class="valid-feedback">
                                         Looks good!
@@ -182,8 +166,8 @@
                                 <!-- <input type="text" class="form-control" id="validationCustom04" name="department" placeholder="CSE"> -->
                                 <select class="form-select" name="department" id="department">
                                     <option>Select</option>
-                                    <option>IT</option>
-                                    <option>CSE</option>
+                                    <option>Department1</option>
+                                    <option>Department2</option>
                                 </select>
                                 <div class="valid-feedback">
                                     Looks good!
@@ -198,7 +182,23 @@
                                 </div>
                             </div>
                         </div>
-                            {{-- <div class="col-md-4">
+                        {{-- <div class="col-md-4">
+                                <div class="mb-3">
+                                    <label for="validationCustom02" class="form-label">Designation</label>
+                                    <input type="text" class="form-control" id="validationCustom02" name="designation"
+                                        placeholder="Designation" value="{{ old('designation') }}" required>
+                                    <div class="valid-feedback">
+                                        Looks good!
+                                    </div>
+                                    <span class="text-danger">@error('designation')
+                                        {{ $message }} @enderror</span>
+                                    <div class="invalid-feedback">
+                                        Please enter the valid designation.
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-4">
                                 <div class="mb-3">
                                     <label for="validationCustom04" class="form-label">Department</label>
                                     <input type="text" class="form-control" id="validationCustom04" name="department" placeholder="CSE"
@@ -222,7 +222,7 @@
                                         Please provide a valid zipcode.
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                 </div>
                 {{-- <div class="form-check mb-3">
                             <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
