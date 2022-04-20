@@ -40,21 +40,6 @@
                         <div class="row">
                             <div class="col-md-3">
                                 <div class="mb-3">
-                                    <div class="col-md-4">
-                                <div class="mb-3">
-                                    <label for="validationCustom02" class="form-label">Employee ID</label>
-                                    <input type="text" class="form-control" id="validationCustom02" name="employeeId"
-                                        placeholder="employee id" value="{{ $employee->employeeId }}" required>
-                                    <div class="valid-feedback">
-                                        Looks good!
-                                    </div>
-                                    <span class="text-danger">@error('employeeId')
-                                        {{ $message }} @enderror</span>
-                                    <div class="invalid-feedback">
-                                        Please enter the valid Employee id.
-                                    </div>
-                                </div>
-                            </div>
                                     <span for="validationCustom01" class="form-label">User Name<span
                                             style="color:red">*</span></label>
                                         <input type="text" class="form-control" id="validationCustom01" name="username"
@@ -127,6 +112,9 @@
                                     <!-- <input type="text" class="form-control" id="validationCustom02" name="designation" placeholder="Designation" value="{{ old('designation') }}"> -->
                                     <select class="form-select" name="designation" id="designation"
                                         value="{{ $employee->designation }}">
+                                        <option>Select</option>
+                                        <option>Designation1</option>
+                                        <option>Designation2</option>
                                     </select>
                                     <div class="valid-feedback">
                                         Looks good!
@@ -152,7 +140,7 @@
                                     @foreach ($designations as $designation)
                                         {{-- <option value="{{ $region }}">{{ $region }}</option> --}}
                                         <option value="{{ $employee->designation }}">
-                                            {{ $designation }}
+                                            {{ $designation }}: selected
                                         </option>
                                     @endforeach
                                 </select>
