@@ -39,6 +39,7 @@ class EmployeeImportController extends Controller
         foreach ($employees as $employee) {
             $user->employee()->create([
                 'username'    => $employee['username'],
+                'employeeId'  => $employee['employeeId'],
                 'first_name'  => $employee['first_name'],
                 'last_name'   => $employee['last_name'],
                 'email'       => $employee['email'],
