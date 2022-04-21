@@ -29,6 +29,10 @@ class EmployeeImportController extends Controller
      */
     public function importEmployee(Request $request)
     {
+        $request->validate(
+            [
+                'file'    => ['required','mimes:csv,txt'],
+            ]);
         $fileName = time() . '.' . $request->file->getClientOriginalExtension();
         $request->file->move(public_path('uploads'), $fileName);
         $csvFile   = public_path('uploads/' . $fileName);
