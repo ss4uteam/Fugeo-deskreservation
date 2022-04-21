@@ -31,8 +31,9 @@ class EmployeeImportController extends Controller
     {
         $request->validate(
             [
-                'file'    => ['required','mimes:csv,txt'],
-            ]);
+                'file' => ['required', 'mimes:csv,txt'],
+            ]
+        );
         $fileName = time() . '.' . $request->file->getClientOriginalExtension();
         $request->file->move(public_path('uploads'), $fileName);
         $csvFile   = public_path('uploads/' . $fileName);
@@ -42,14 +43,14 @@ class EmployeeImportController extends Controller
 
         foreach ($employees as $employee) {
             $user->employee()->create([
-                'username'    => $employee['username'],
+                'username'    =>  ' ' ? $employee['email']: $employee['username'],
                 'employeeId'  => $employee['employeeId'],
                 'first_name'  => $employee['first_name'],
                 'last_name'   => $employee['last_name'],
                 'email'       => $employee['email'],
                 'department'  => $employee['department'],
                 'designation' => $employee['designation'],
-                'password'    => Hash::make($employee['password']),
+                'password'    =>  ' ' ? Hash::make($employee['email']):Hash::make($employee['password']),
             ]);
         }
         return redirect('employee.details')
