@@ -33,15 +33,26 @@
                     <ul class="-ml-6 mt-8 mb-4 list-disc pl-10 text-left">
                         <li>Your CSV must list one record per row.</li>
                         <li>Required columns:</li>
-                        <h4><code class="bg-carbon-5 text-carbon-50 py-2 px-4">Username ,First Name, Last Name,E-mail,
+                        <h4><code class="bg-carbon-5 text-carbon-50 py-2 px-4">Employee ID, Username ,First Name, Last
+                                Name,E-mail,
                                 Designation, Department,Password</code></h4>
                     </ul>
                     </p>
-                    <form action="{{ url('importEmployee') }}" class="form-horizontal" method="post"
+                    <form action="{{ url('importEmployee') }}" class="form-horizontal needs-validation" method="post"
                         enctype="multipart/form-data">
                         @csrf
-                        <input class="form-control-sm" type="file" name="file"
-                        required/>
+                        <input class="form-control-sm" type="file" name="file" id="validationCustom02" required />
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                        <span class="text-danger">
+                            @error('file')
+                                {{ $message }}
+                            @enderror
+                        </span>
+                        <div class="invalid-feedback">
+                            Upload CSV.
+                        </div>
                         <button class="btn btn-primary">Import File</button>
                     </form>
                 </div> <!-- end col -->

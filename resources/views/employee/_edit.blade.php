@@ -1,63 +1,52 @@
 @extends('layouts.master')
 
 @section('title')
-    @lang('Add Employee')
+    @lang('Edit Employee')
 @endsection
 <link href="{{ URL::asset('/assets/css/bootstrap.min.css') }}" id="bootstrap-style" rel="stylesheet"
     type="text/css" />
 <link href="{{ URL::asset('/assets/css/app.min.css') }}" id="bootstrap-style" rel="stylesheet" type="text/css" />
 <link href="{{ URL::asset('/assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ URL::asset('/css/cutom.css') }}" id="custom-style" rel="stylesheet" type="text/css" />
 @section('content')
     @component('components.breadcrumb')
         @slot('li_1')
             Employee
         @endslot
         @slot('title')
-            Add Employee
+            Edit Employee
         @endslot
     @endcomponent
+    @if (Session::get('success'))
+        <div class="alert alert-success" role="alert">
+            {{ Session::get('success') }}
+        </div>
+    @endif
 
+    @if (Session::get('fail'))
+        <div class="alert alert-danger" role="alert">
+            {{ Session::get('fail') }}
+        </div>
+    @endif
     <div class="row">
         <div class="col-xl-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title mb-4">Add Employee Details</h4>
-                    <form action="{{ route('addEmployee') }}" class="needs-validation" novalidate method="post">
+                    <h4 class="card-title">Employee Details</h4>
+                    <p class="card-title-desc">Edit Employee Details</p>
+                    <form action="{{ route('employee.update', ['id' => $employee->id]) }}" method="post"
+                        class="needs-validation" novalidate>
                         @csrf
                         <div class="row">
-                            <div class="col-md-4">
-                                <div class="mb-3">
-                                    <label for="validationCustom02" class="form-label">Employee ID<span
-                                            style="color:red">*</span></label>
-                                    <input type="text" class="form-control" id="validationCustom02" name="employeeId"
-                                        placeholder="employee id" value="{{ old('employeeId') }}" required>
-                                    <div class="valid-feedback">
-                                        Looks good!
-                                    </div>
-                                    <span class="text-danger">@error('employeeId')
-                                        {{ $message }} @enderror</span>
-                                    <div class="invalid-feedback">
-                                        Please enter the valid Employee id.
-                                    </div>
-                                </div>
-                            </div>
                             <div class="col-md-3">
                                 <div class="mb-3">
-                                    <label for="validationCustom01" class="form-label">User Name<span
+                                    <span for="validationCustom01" class="form-label">User Name<span
                                             style="color:red">*</span></label>
-                                    <input type="text" class="form-control" id="validationCustom01" name="username"
-                                        placeholder="username" value="{{ old('username') }}" required>
-                                    <div class="valid-feedback">
-                                        Looks good!
-                                    </div>
-                                    <span class="text-danger">
-                                        @error('username')
-                                            {{ $message }}
-                                        @enderror
-                                    </span>
-                                    <div class="invalid-feedback">
-                                        Please enter the valid username.
-                                    </div>
+                                        <input type="text" class="form-control" id="validationCustom01" name="username"
+                                            value="{{ $employee->username }}" required>
+                                        <div class="valid-feedback">
+                                            Looks good!
+                                        </div>
                                 </div>
                             </div>
                         </div>
@@ -67,17 +56,9 @@
                                     <label for="validationCustom01" class="form-label">First name<span
                                             style="color:red">*</span></label>
                                     <input type="text" class="form-control" id="validationCustom01" name="firstName"
-                                        placeholder="First name" value="{{ old('firstName') }}" required>
+                                        placeholder="First name" value="{{ $employee->first_name }}" required>
                                     <div class="valid-feedback">
                                         Looks good!
-                                    </div>
-                                    <span class="text-danger">
-                                        @error('firstName')
-                                            {{ $message }}
-                                        @enderror
-                                    </span>
-                                    <div class="invalid-feedback">
-                                        Please enter the valid Firstname.
                                     </div>
                                 </div>
                             </div>
@@ -86,17 +67,9 @@
                                     <label for="validationCustom02" class="form-label">Last name<span
                                             style="color:red">*</span></label>
                                     <input type="text" class="form-control" id="validationCustom02" name="lastName"
-                                        placeholder="Last name" value="{{ old('lastname') }}" required>
+                                        value="{{ $employee->last_name }}" required>
                                     <div class="valid-feedback">
                                         Looks good!
-                                    </div>
-                                    <span class="text-danger">
-                                        @error('lastName')
-                                            {{ $message }}
-                                        @enderror
-                                    </span>
-                                    <div class="invalid-feedback">
-                                        Please enter the valid Last name.
                                     </div>
                                 </div>
                             </div>
@@ -119,7 +92,7 @@
                                     <label for="validationCustom01" class="form-label">Email Id<span
                                             style="color:red">*</span></label>
                                     <input type="email" class="form-control" id="validationCustom01" name="email"
-                                        placeholder="Email Id" value="{{ old('email') }}" required>
+                                        placeholder="Email Id" value="{{ $employee->email }}" required>
                                     <div class="valid-feedback">
                                         Looks good!
                                     </div>
@@ -135,31 +108,13 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="mb-3">
-                                    <label for="validationCustom01" class="form-label">Password<span
-                                            style="color:red">*</span></label>
-                                    <input type="text" class="form-control" id="validationCustom01" name="password"
-                                        placeholder="Password" value="{{ old('password') }}" required>
-                                    <div class="valid-feedback">
-                                        Looks good!
-                                    </div>
-                                    <span class="text-danger">
-                                        @error('password')
-                                            {{ $message }}
-                                        @enderror
-                                    </span>
-                                    <div class="invalid-feedback">
-                                        Please enter the valid password.
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="mb-3">
                                     <label for="validationCustom02" class="form-label">Designation</label>
                                     <!-- <input type="text" class="form-control" id="validationCustom02" name="designation" placeholder="Designation" value="{{ old('designation') }}"> -->
-                                    <select class="form-select" name="designation" id="designation">
+                                    <select class="form-select" name="designation" id="designation"
+                                        value="{{ $employee->designation }}">
                                         <option>Select</option>
-                                        <option>Developer</option>
-                                        <option>Designer</option>
+                                        <option>Designation1</option>
+                                        <option>Designation2</option>
                                     </select>
                                     <div class="valid-feedback">
                                         Looks good!
@@ -181,9 +136,13 @@
                                 <label for="validationCustom04" class="form-label">Department</label>
                                 <!-- <input type="text" class="form-control" id="validationCustom04" name="department" placeholder="CSE"> -->
                                 <select class="form-select" name="department" id="department">
-                                    <option>Select</option>
-                                    <option>IT</option>
-                                    <option>CSE</option>
+                                    <option value="0">Select department</option>
+                                    @foreach ($designations as $designation)
+                                        {{-- <option value="{{ $region }}">{{ $region }}</option> --}}
+                                        <option value="{{ $employee->designation }}">
+                                            {{ $designation }}: selected
+                                        </option>
+                                    @endforeach
                                 </select>
                                 <div class="valid-feedback">
                                     Looks good!
@@ -198,43 +157,29 @@
                                 </div>
                             </div>
                         </div>
-                            {{-- <div class="col-md-4">
+                        {{-- <div class="col-md-4">
                                 <div class="mb-3">
-                                    <label for="validationCustom04" class="form-label">Department</label>
-                                    <input type="text" class="form-control" id="validationCustom04" name="department" placeholder="CSE"
-                                        required>
-                                       <div class="valid-feedback">
+                                    <label for="validationCustom02" class="form-label">Designation<span style="color:red">*</span></label>
+                                    <input type="text" class="form-control" id="validationCustom02"
+                                        name="designation" value="{{ $employee->designation }}" required>
+                                    <div class="valid-feedback">
                                         Looks good!
                                     </div>
-                                    <span class="text-danger">@error('department')
-                                        {{ $message }} @enderror</span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <label for="validationCustom04" class="form-label">Department<span style="color:red">*</span></label>
+                                    <input type="text" class="form-control" id="validationCustom04" name="department"
+                                        value="{{ $employee->department }}" required>
                                     <div class="invalid-feedback">
-                                        Please enter the valid department.
+                                        Please provide a valid Department.
                                     </div>
                                 </div>
                             </div> --}}
-                        {{-- <div class="col-md-4">
-                                <div class="mb-3">
-                                    <label for="validationCustom05" class="form-label">Zip</label>
-                                    <input type="text" class="form-control" id="validationCustom05" placeholder="Zip"
-                                        required>
-                                    <div class="invalid-feedback">
-                                        Please provide a valid zipcode.
-                                    </div>
-                                </div>
-                            </div>
                 </div>
-                {{-- <div class="form-check mb-3">
-                            <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
-                            <label class="form-check-label" for="invalidCheck">
-                                Agree to terms and conditions
-                            </label>
-                            <div class="invalid-feedback">
-                                You must agree before submitting.
-                            </div>
-                        </div> --}}
                 <div>
-                    <button class="btn btn-primary" type="submit">Save</button>
+                    <button class="btn btn-primary" type="submit">Submit</button>
                 </div>
                 </form>
             </div>

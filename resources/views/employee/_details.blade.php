@@ -3,7 +3,6 @@
 @section('css')
     <!-- DataTables -->
     <link href="{{ URL::asset('/assets/libs/datatables/datatables.min.css') }}" rel="stylesheet" type="text/css" />
-    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('/assets/libs/toastr/toastr.min.css') }}">
     <link href="{{ URL::asset('/css/custom.css') }}" id="custom-style" rel="stylesheet" type="text/css" />
 @endsection
@@ -42,9 +41,7 @@
                                     <i class="fas fa-plus px-1"></i> Add New Employee
                                 </button>
                             </a>
-                            <a href="drop-zone-employees" class="btn btn-primary" type="button">Import CSV</a>
-                            
-                            <span data-href="{{ URL('employeeCsv') }}" id="export" class="btn btn-dark" onclick="exportTasks(event.target);">Export</span>
+                            <a href="drop-zone-employees" class="btn btn-primary btn-lg" type="button">Import CSV</a>
                         </div>
                     </div>
 
@@ -110,11 +107,4 @@
 
 <!-- toastr init -->
 <script src="{{ URL::asset('/assets/js/pages/toastr.init.js') }}"></script>
-
-<script type="text/javascript">
-    function exportTasks(_this) {
-        let _url = $(_this).data('href');
-        window.location.href = _url;
-    }
-</script>
 @endsection
