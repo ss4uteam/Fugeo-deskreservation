@@ -1,5 +1,18 @@
+.navbar-brand-box {
+    text-align: left;
+}
+
 .navbar-brand-box .logo {
     color: #fff;
+}
+
+.sub-note {
+    position: relative;
+    top: -15px;
+    font-size: 12px;
+    line-height: 0;
+    font-style: italic;
+    display: block;
 }
 
 table tbody th,

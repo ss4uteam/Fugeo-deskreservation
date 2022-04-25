@@ -34,7 +34,7 @@
                                                 <div dir="ltr">
                                                     <h2 class="mb-3 text-primary">Welcome to</h2>
                                                     <h2 class="mb-3 text-dark">FUEGO</h2>
-                                                    <h2 class="mb-3 text-dark">Health Systems</h2>
+                                                    <h2 class="mb-3 text-dark">Desk Reservation System</h2>
                                                 </div>
                                             </div>
                                         </div>
@@ -56,6 +56,7 @@
                                         {{-- <img src="{{ URL::asset('/assets/images/logo-dark.png') }}" alt="" height="18" class="auth-logo-dark">
                                         <img src="{{ URL::asset('/assets/images/logo-light.png') }}" alt="" height="18" class="auth-logo-light"> --}}
                                         <h1>FEUGO</h1>
+                                        <h6>Desk Reservation System</h6>
                                     </a>
                                 </div>
                                 <div class="my-auto">
@@ -83,8 +84,8 @@
                                             @enderror
                                     </div> --}}
                                     <div class="mb-3">
-                                        <label for="username" class="form-label">Company ID<span style="color:red">*</span></label>
-                                        <input type="text" class="form-control @error('username') is-invalid @enderror" id="username" value="{{ old('username') }}" name="username" placeholder="Enter Company ID" autofo cus required>
+                                        <label for="username" class="form-label">User ID<span style="color:red">*</span></label>
+                                        <input type="text" class="form-control @error('username') is-invalid @enderror" id="username" value="{{ old('username') }}" name="username" placeholder="Enter User ID" autofo cus required>
                                         @error('username')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -146,12 +147,12 @@
                                                         </ul>
                                                     </div> --}}
                                     </form>
-                                    <div class="mt-5 text-center">
+                                    <!-- <div class="mt-5 text-center">
                                         <p>Employee Account ? <a href="{{ route('employee.login') }}" class="fw-medium text-primary"> Login </a> </p>
                                     </div>
                                     <div class="mt-5 text-center">
                                         <p>Don't have an account ? <a href="{{ url('register') }}" class="fw-medium text-primary"> Signup now </a> </p>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>

@@ -28,7 +28,7 @@
                                                 <div dir="ltr">
                                                     <h2 class="mb-3 text-primary">Welcome to Employee Login</h2>
                                                     <h2 class="mb-3 text-dark">FUEGO</h2>
-                                                    <h2 class="mb-3 text-dark">Health Systems</h2>
+                                                    <h2 class="mb-3 text-dark">Desk Reservation System</h2>
                                                 </div>
                                             </div>
                                         </div>
@@ -67,11 +67,11 @@
                                     <form class="form-horizontal" method="POST" action="{{ route('employee.check') }}">
                                         @csrf
                                         <div class="mb-3">
-                                            <label for="username" class="form-label">Employee ID<span style="color:red">*</span></label>
+                                            <label for="username" class="form-label">User ID<span style="color:red">*</span></label>
                                             <input type="text"
                                                 class="form-control @error('username') is-invalid @enderror"
                                                 value="{{ old('username') }}" id="username" name="username"
-                                                placeholder="Enter Employee ID" autofocus>
+                                                placeholder="Enter User ID" autofocus>
                                             @error('username')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>

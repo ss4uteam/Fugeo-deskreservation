@@ -10,7 +10,7 @@
                 <li class="menu-title" key="t-menu">@lang('translation.Menu')</li>
                 <li>
                     <a href="{{ route('root') }}" class="waves-effect">
-                        <span key="t-file-manager">Admin dashboard</span>
+                        <span key="t-file-manager">Dashboard</span>
                     </a>
                 </li>
                 <li>
@@ -56,10 +56,10 @@
                 </li> --}}
 
                 <li>
-                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                    <a href="{{ URL('location') }}" class="waves-effect">
                         <span key="t-multi-level">Location</span>
                     </a>
-                    <ul class="sub-menu" aria-expanded="true">
+                    <!-- <ul class="sub-menu" aria-expanded="true">
                         <li>
                             <a href="{{ URL('location') }}" key="t-level-2-1">
                                 Overview</a>
@@ -67,12 +67,21 @@
                         <li>
                             <a href="{{ URL('addlocation') }}" key="t-level-2-2">Add Location</a>
                         </li>
-                    </ul>
+                    </ul> -->
                 </li>
                 <li>
-                    <a href="{{ URL('floor') }}" class="waves-effect">
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <span key="t-multi-level">Floor</span>
                     </a>
+                    <ul class="sub-menu" aria-expanded="true">
+                        <li>
+                            <a href="{{ URL('floor') }}" key="t-level-2-1">
+                                Overview</a>
+                        </li>
+                        <li>
+                            <a href="javascript: void(0);" key="t-level-2-2">Create Floor</a>
+                        </li>
+                    </ul>
                 </li>
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
@@ -95,7 +104,7 @@
                         </a>
                     </ul>
                 </li>
-                <li>
+                <!-- <li>
                     <a href="maps-overview" class="waves-effect">
                         <span key="t-multi-level">Allocate Desk</span>
                     </a>
@@ -104,7 +113,7 @@
                     <a href="javascript: void(0);" class="waves-effect">
                         <span key="t-multi-level">Settings</span>
                     </a>
-                    <!-- <ul class="sub-menu" aria-expanded="true">
+                    <ul class="sub-menu" aria-expanded="true">
                         <li>
                             <a href="javascript: void(0);" class="has-arrow" key="t-level-1-1">Location</a>
                             <ul class="sub-menu" aria-expanded="true">
@@ -116,8 +125,8 @@
                                 </li>
                             </ul>
                         </li>
-                    </ul> -->
-                </li>
+                    </ul>
+                </li> -->
 
             </ul>
         </div>
