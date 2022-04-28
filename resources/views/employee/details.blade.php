@@ -43,8 +43,8 @@
                                 </button>
                             </a>
                             <a href="drop-zone-employees" class="btn btn-primary" type="button">Import CSV</a>
-                            
-                            <span data-href="{{ URL('employeeCsv') }}" id="export" class="btn btn-dark" onclick="exportTasks(event.target);">Export</span>
+                    
+                            <span data-href="{{ route('employee') }}" id="export" class="btn btn-dark">Export</span>
                         </div>
                     </div>
 
@@ -111,7 +111,8 @@
 <!-- toastr init -->
 <script src="{{ URL::asset('/assets/js/pages/toastr.init.js') }}"></script>
 
-<script type="text/javascript">
+<script>
+    $('#export').on('click', () => exportTasks(event.target));
     function exportTasks(_this) {
         let _url = $(_this).data('href');
         window.location.href = _url;
