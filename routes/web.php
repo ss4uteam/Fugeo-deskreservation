@@ -91,3 +91,8 @@ Route::delete(
 // CSV import
 
 Route::post('importEmployee',[App\Http\Controllers\EmployeeImportController::class,'importEmployee']);
+
+// CSV export
+
+Route::get('/employee/export', [App\Http\Controllers\EmployeeController::class, 'exportEmployeeCsv'])->name('employee');
+
