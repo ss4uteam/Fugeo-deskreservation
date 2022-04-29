@@ -1,16 +1,35 @@
-table tbody th,
-table tbody td {
-    vertical-align: middle;
+.navbar-brand-box {
+    text-align: left;
 }
 
 .navbar-brand-box .logo {
     color: #fff;
 }
 
+.sub-note {
+    position: absolute;
+    bottom: 15px;
+    left: 0;
+    font-size: 12px;
+    line-height: 0;
+    font-style: italic;
+    display: block;
+}
+
+table tbody th,
+table tbody td {
+    vertical-align: middle;
+}
+
 .table-action {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+}
+
+.table-edits .empty {
+    color: green;
+    font-weight: 900;
 }
 
 .delete-icon input[role=button] {
@@ -27,7 +46,16 @@ table tbody td {
 }
 
 .leaflet-map {
-    height: 600px;
+    height: 550px;
+}
+
+.form-control.is-invalid, .was-validated .form-control:invalid {
+    background: none;
+}
+
+table.dataTable > thead > tr > th:not(.sorting_disabled), table.dataTable > thead > tr > td:not(.sorting_disabled) {
+    background-color: #EFF2F7;
+    font-weight: 600;
 }
 
 .leaflet-popup-content {
@@ -42,6 +70,11 @@ table tbody td {
 .leaflet-container a.leaflet-popup-close-button {
     top: 5px;
     right: 5px;
+    color: #f46a6a;
+}
+
+.hover-underline:hover {
+    text-decoration: underline !important;
 }
 
 .floor-map-date {
@@ -49,21 +82,21 @@ table tbody td {
     max-width: 200px;
 }
 
-.form-switch.toggle-button .form-check-input:checked {
-    background-color: #34c38f;
-    border-color: #34c38f;
+/* PROFILE OVERVIEW */
+.profile_overview .form-control {
+    border: 0;
+    pointer-events: none;
 }
 
-.form-switch.toggle-button .form-check-input {
-    width: 3em;
-    height: 20px;
+.profile_overview form p {
+    padding-left: 10px;
 }
 
-.toggle-button label {
-    font-size: 20px;
-    padding-left: 13px;
+@media (max-width: 992px) {
+    .navbar-brand-box {
+        width: 200px;
+    }
 }
-
 
 /* #leaflet-map {
     position: absolute;
