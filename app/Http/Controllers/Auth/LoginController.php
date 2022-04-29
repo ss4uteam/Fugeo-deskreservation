@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Models\User;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 
 class LoginController extends Controller
 {
@@ -42,6 +42,16 @@ class LoginController extends Controller
     }
 
     /**
+     * To login with the company_id
+     *
+     * @return string
+     */
+    public function password()
+    {
+        return 'password';
+    }
+
+    /**
      * Create a new controller instance.
      *
      * @return void
@@ -49,6 +59,38 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    /**
+     * Validate the user login request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return void
+     *
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    protected function validateLogin(Request $request)
+    {
+        $request->validate([
+            $this->username() => 'required|string',
+            $this->password() => 'required|string',
+        ]);
+    }
+
+    /**
+     * Get the failed login response instance.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     *
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    protected function sendFailedLoginResponse(Request $request)
+    {
+        throw ValidationException::withMessages([
+            $this->username() => [trans('auth.failed')],
+            $this->password() => [trans('auth.password')],
+        ]);
     }
 
     /**
@@ -76,6 +118,7 @@ class LoginController extends Controller
         }
 
         if ($this->attemptLogin($request, $request->get('remember'))) {
+            setcookie('login-test', 'login');
             if ($request->hasSession()) {
                 $request->session()->put('auth.password_confirmed_at', time());
             }
@@ -90,5 +133,4 @@ class LoginController extends Controller
 
         return $this->sendFailedLoginResponse($request);
     }
-
 }
