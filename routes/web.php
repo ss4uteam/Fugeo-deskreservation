@@ -20,6 +20,8 @@ Auth::routes();
 Route::get('/', [App\Http\Controllers\HomeController::class, 'root'])
     ->name('root');
 
+Route::post('/login', [App\Http\Controllers\Auth\LoginController::class,'login'])->name('login_user');
+
 //Grouping routes
 Route::prefix('employee')->name('employee.')->group(function () {
     Route::middleware(['guest:employee'])->group(function () {

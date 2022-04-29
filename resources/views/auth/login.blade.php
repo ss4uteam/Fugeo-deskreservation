@@ -70,7 +70,7 @@
 
                                     @else --}}
                                     <div class="mt-4">
-                                        <form class="form-horizontal" method="POST" action="{{ route('login') }}">
+                                        <form class="form-horizontal" method="POST" action="{{ route('login_user') }}">
                                             {{-- @endisset --}}
                                             @csrf
                                             {{-- <div class="mb-3">
